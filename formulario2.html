@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Llena tus datos</h2>
+    <form id="Forms">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Tu nombre..."
+        required
+      /><br /><br />
+      <label>Email:</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Tu email..."
+        required
+      /><br /><br />
+      <label>Contraseña:</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Contraseña"
+        required
+      /><br /><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="resultado" style="margin-top: 20px; color: blue"></div>
+    <script>
+      const form = document.getElementById("Forms");
+      const visor = document.getElementById("resultado");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+        const datos = new FormData(form); // Crea un objeto FormData con los datos del formulario
+        const name = datos.get("name");
+        const email = datos.get("email");
+        const password = datos.get("password");
+        visor.innerText =
+          "Hola " + name + ", tu contraseña se enviará a: " + email;
+        console.log("Datos recibidos ", name, email, password);
+      });
+    </script>
+  </body>
+</html>
